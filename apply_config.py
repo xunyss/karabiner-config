@@ -74,13 +74,13 @@ RULE_WINDOWS: dict = {
         },
         {
             "type": "basic",
-            "from": {"key_code": "right_command"},
+            "from": {"modifiers": {"optional": ["caps_lock"]}, "key_code": "right_command"},
             "to": [{"key_code": "right_option"}],
             "conditions": [{"type": "frontmost_application_if", "bundle_identifiers": BUNDLES_WINDOWS}]
         },
         {
             "type": "basic",
-            "from": {"key_code": "right_option"},
+            "from": {"modifiers": {"optional": ["caps_lock"]}, "key_code": "right_option"},
             "to": [{"key_code": "right_control"}],
             "conditions": [
                 {"type": "frontmost_application_if", "bundle_identifiers": BUNDLES_WINDOWS},
