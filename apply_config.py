@@ -8,10 +8,13 @@ from pathlib import Path
 
 # Windows-supported applications
 BUNDLES_WINDOWS = [
-    "^com\\.parallels\\.desktop\\.console$",
-    "^com\\.vmware\\.horizon$",
+    # VDI (remote)
+    # "^com\\.vmware\\.horizon$",
     "^com\\.citrix\\.receiver\\.icaviewer\\.mac$",
     "^com\\.microsoft\\.rdc\\.macos$",
+    # VM (local)
+    # "^com\\.parallels\\.desktop\\.console$",
+    "^com\\.vmware\\.fusion",
 ]
 
 BUNDLES_EXCEPTS = BUNDLES_WINDOWS + [
