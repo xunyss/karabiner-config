@@ -63,6 +63,7 @@ RULE_INPUT_SOURCE: dict = {
 RULE_WINDOWS: dict = {
     "description": "Windows on Mac :: Swap [⌘ and ⌥] & Allow [Screen Shot, Lock Screen]",
     "manipulators": [
+        # swap command and option
         {
             "type": "basic",
             "from": {"modifiers": {"optional": ["any"]}, "key_code": "left_command"},
@@ -81,6 +82,7 @@ RULE_WINDOWS: dict = {
             "to": [{"key_code": "right_option"}],
             "conditions": [{"type": "frontmost_application_if", "bundle_identifiers": BUNDLES_WINDOWS}]
         },
+        # 맥북 내장 키보드: 한자키
         {
             "type": "basic",
             "from": {"modifiers": {"optional": ["caps_lock"]}, "key_code": "right_option"},
@@ -90,6 +92,7 @@ RULE_WINDOWS: dict = {
                 {"type": "device_if", "identifiers": DEVICE_MACBOOK_KEYBOARD}
             ]
         },
+        # 맥북 내장 키보드: 메뉴키
         {
             "type": "basic",
             "from": {"key_code": "right_option"},
@@ -99,18 +102,27 @@ RULE_WINDOWS: dict = {
                 {"type": "device_unless", "identifiers": DEVICE_MACBOOK_KEYBOARD}
             ]
         },
+        # swap 방지: screen_shot
         {
             "type": "basic",
             "from": {"modifiers": {"mandatory": ["left_shift", "left_option"], "optional": ["left_control", "caps_lock"]}, "key_code": "4"},
             "to": [{"modifiers": ["left_shift", "left_command"], "key_code": "4"}],
             "conditions": [{"type": "frontmost_application_if", "bundle_identifiers": BUNDLES_WINDOWS}]
         },
+        # swap 방지: lock_screen
         {
             "type": "basic",
             "from": {"modifiers": {"mandatory": ["left_control", "left_option"], "optional": ["caps_lock"]}, "key_code": "q"},
             "to": [{"modifiers": ["left_control", "left_command"], "key_code": "q"}],
             "conditions": [{"type": "frontmost_application_if", "bundle_identifiers": BUNDLES_WINDOWS}]
-        }
+        },
+        # swap 방지: spotlight
+        {
+            "type": "basic",
+            "from": {"modifiers": {"mandatory": ["left_option"], "optional": ["caps_lock"]}, "key_code": "spacebar"},
+            "to": [{"modifiers": ["left_command"], "key_code": "spacebar"}],
+            "conditions": [{"type": "frontmost_application_if", "bundle_identifiers": BUNDLES_WINDOWS}]
+        },
     ]
 }
 
