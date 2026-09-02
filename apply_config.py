@@ -109,6 +109,12 @@ RULE_WINDOWS: dict = {
             "to": [{"modifiers": ["left_shift", "left_command"], "key_code": "4"}],
             "conditions": [{"type": "frontmost_application_if", "bundle_identifiers": BUNDLES_WINDOWS}]
         },
+        {
+            "type": "basic",
+            "from": {"modifiers": {"mandatory": ["left_shift", "left_command"], "optional": ["left_control", "caps_lock"]}, "key_code": "4"},
+            "to": [],
+            "conditions": [{"type": "frontmost_application_if", "bundle_identifiers": BUNDLES_WINDOWS}]
+        },
         # swap 방지: lock_screen
         {
             "type": "basic",
@@ -116,11 +122,23 @@ RULE_WINDOWS: dict = {
             "to": [{"modifiers": ["left_control", "left_command"], "key_code": "q"}],
             "conditions": [{"type": "frontmost_application_if", "bundle_identifiers": BUNDLES_WINDOWS}]
         },
+        {
+            "type": "basic",
+            "from": {"modifiers": {"mandatory": ["left_control", "left_command"], "optional": ["caps_lock"]}, "key_code": "q"},
+            "to": [],
+            "conditions": [{"type": "frontmost_application_if", "bundle_identifiers": BUNDLES_WINDOWS}]
+        },
         # swap 방지: spotlight
         {
             "type": "basic",
             "from": {"modifiers": {"mandatory": ["left_option"], "optional": ["caps_lock"]}, "key_code": "spacebar"},
             "to": [{"modifiers": ["left_command"], "key_code": "spacebar"}],
+            "conditions": [{"type": "frontmost_application_if", "bundle_identifiers": BUNDLES_WINDOWS}]
+        },
+        {
+            "type": "basic",
+            "from": {"modifiers": {"mandatory": ["left_command"], "optional": ["caps_lock"]}, "key_code": "spacebar"},
+            "to": [],
             "conditions": [{"type": "frontmost_application_if", "bundle_identifiers": BUNDLES_WINDOWS}]
         },
     ]
